@@ -1,0 +1,5 @@
+1,2c1
+< 1>2>Hay una cronología consistente.
+< 3>Fin.
+---
+> 1>2>ERROR: se retornó una cronología que no es consistente3>Fin.

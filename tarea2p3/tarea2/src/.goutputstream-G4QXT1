@@ -1,0 +1,70 @@
+/*
+  Módulo de implementación de `cronologia_consistente'.
+
+  Laboratorio de Programación 3.
+  InCo-FIng-UDELAR
+*/
+#include <stdio.h>
+#include "../include/grafo.h"
+#include "../include/cronologia_consistente.h"
+
+Cronologia cronologia_consistente(nat n, ListaDatos tipo1, ListaDatos tipo2)
+{
+  bool existe_cr_consistente = false; 
+
+  Cronologia cr = new evento[2*n]; 
+  
+  Grafo grafo = crear_grafo(n,true);
+  for(nat i=1;i<n;i++){
+	  agregar_vertice(i,grafo);
+      agregar_vertice(i,grafo);
+  }
+  for(nat i =1;i<n;i++){
+	  for(nat j=1;j<n;j++){
+		  dato par_ij = {i,j};
+	  	  if(pertenece_a_lista_datos(par_ij,tipo1))
+	  	    agregar_arista(i,j,grafo);
+	  	  else if(pertenece_a_lista_datos(par_ij,tipo2)){
+		    agregar_arista(i,j,grafo);
+	  	    agregar_arista(j,i,grafo);
+          }
+      }
+  }
+  // Determinar si existe o no una cronología consistente con los datos, 
+  // en caso de existir, construirla en cr 
+
+  if(existe_cr_consistente) { // si existe, retornarla en cr
+    return cr;
+  } else {// si no existe, liberar la memoria asociada a cr y retornar NULL   
+    delete[] cr;
+    return NULL;
+  }
+
+} 
+
+bool comprobarDAG(Grafo g_dirigido){
+	Lista o_t = crear_lista();
+	Lista S = crear_lista();
+	nat i = 0;
+	Lista vert = vertices(g_dirigido);
+	while(i< cantidad_vertices(g_dirigido)){
+		
+	  if(in_grado(primero(vert),g_dirigido)==0){
+	    insertar_al_final(primero(vert),S);
+	    remover(primero(vert),vert);
+      }
+      i++;
+    }
+    while(!es_vacia_lista(S)){
+		insertar_al_final(primero(S),o_t);
+		remover(primero(S),S);
+	}
+	
+	if(es_vacia_lista(S))
+	  return true;
+	else{
+		Lista ciclo = crear_lista();
+		  
+	  
+    
+    

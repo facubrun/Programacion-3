@@ -1,0 +1,17 @@
+1,2c1,13
+< 1>2>3>4>Hay una cronología consistente.
+< 5>Fin.
+---
+> ==3822== Conditional jump or move depends on uninitialised value(s)
+> ==3822==    at 0x8048EAE: es_cronologia_consistente(evento*, unsigned int, rep_lista_datos*, rep_lista_datos*) (principal.cpp:289)
+> ==3822==    by 0x8048AA4: main (principal.cpp:181)
+> ==3822== 
+> ==3822== Use of uninitialised value of size 4
+> ==3822==    at 0x8048ED0: es_cronologia_consistente(evento*, unsigned int, rep_lista_datos*, rep_lista_datos*) (principal.cpp:290)
+> ==3822==    by 0x8048AA4: main (principal.cpp:181)
+> ==3822== 
+> ==3822== Use of uninitialised value of size 4
+> ==3822==    at 0x8048EE8: es_cronologia_consistente(evento*, unsigned int, rep_lista_datos*, rep_lista_datos*) (principal.cpp:291)
+> ==3822==    by 0x8048AA4: main (principal.cpp:181)
+> ==3822== 
+> 1>2>3>4>ERROR: se retornó una cronología que no es consistente5>Fin.

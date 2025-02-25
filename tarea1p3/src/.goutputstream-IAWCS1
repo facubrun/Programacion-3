@@ -1,0 +1,41 @@
+/*
+  Módulo de implementación de `asignacion_residencias'.
+
+  Laboratorio de Programación 3.
+  InCo-FIng-UDELAR
+ */
+
+#include "../include/asignacion_residencias.h"
+#include <cstddef>
+#include "../include/lista.h"
+#include "../include/asignacion.h"
+
+Asignacion asignarResidencias(nat m, nat* C, nat n, nat** hPrefs, nat** ePrefs){
+	//inicializaciones 
+	Lista h_libres = crear_lista();
+	for(nat i = 0;i<m;i++)
+		insertar(i,h_libres);
+		
+	nat *Siguiente = new nat[m];
+	for(nat i = 0;i<m;i++)
+		Siguiente[i]=1;
+		
+	nat *Actual = new nat[n];
+	for(nat i = 0;i<n;i++)
+		Actual[i]=-1;
+    
+    nat **Ranking = new nat*[n];
+    for(nat i = 0;i<n;i++)
+       Ranking[i] = new nat[m];
+       
+    Ranking = ePrefs;   
+    
+    while(!es_vacia_lista(h_libres)){
+		nat hi = primero(h_libres); 
+		nat ej = hPrefs[m][Siguiente[m]];
+		if(Actual[ej]= -1) //esta libre
+		   
+    
+    return NULL; // se debe retornar algo de tipo asignacion
+    
+}
